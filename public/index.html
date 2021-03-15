@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>week5 HitTastic</title>
-    
+    <link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css' />
+    <script type='text/javascript' src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'></script>
+
 </head>
+
 <body>
-    <form action="get">
-        <input id="artistName" type="text">
-        <input id="ajaxButton" type="button" value="submit">
-    </form>
+
+    <input id="searchInput" type="text">
+    <input id="ajaxButton" type="button" value="submit">
+    <input id="ajaxButton2" type="button" value="hometown">
+
+
     <h1>Results</h1>
+
     <div id="results"></div>
-    <script src="week5.js"></script>
+    <div id="map1" style="width:800px; height:600px"> </div>
+
+
+    <script src="songs.js"></script>
 </body>
+
 </html>
