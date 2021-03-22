@@ -43,8 +43,6 @@ async function ajaxArtistSearch(search) {
 
 };
 
-
-
 document.getElementById('ajaxButton').addEventListener('click', () => {
     // Read the product type from a text field
     const search = document.getElementById('searchInput').value;
@@ -90,3 +88,5 @@ document.getElementById('ajaxButton2').addEventListener('click', () => {
     console.log(search);
     locate(search);
 });
+
+
