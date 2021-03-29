@@ -22,8 +22,21 @@ app.use(cors());
 
 
 
+app.use('/users', userRouter);
+app.use('/songs', songRouter);
+app.listen(3000);
 
 
+app.post('*', (req, res, next) => {
+    console.log('received Post request');
+    if (process.env.APP_USER === undefined) {
+        // process.env.APP_USER does not exist (it's undefined)
+        // Return a 401 (Unauthorized) HTTP code, with a JSON error message
+        res.status(401).json({ error: "You're not logged in. Go away!" });
+    } else {
+        next()
+    }
+});
 
 app.use(expressSession({
     // Specify the session store to be used.
@@ -59,21 +72,14 @@ app.use(expressSession({
 
 // Login route
 app.post('/login', (req, res) => {
-    console.log(req.body)
     con.query(`SELECT * FROM ht_users WHERE username=? AND password=?`,
-        [req.body.username, req.body.password], (error, results, fields) => {
+        [req.params.username, req.params.password], (error, results, fields) => {
             if (error) {
                 res.status(500).json({ error: error });
-                console.log(error)
             } else {
                 console.log(results)
-                console.log(req.body.username)
-                console.log(req.body.password)
                 if (results.length == 1) {
-                    req.session.username = req.body.username;
                     res.json({ "username": req.body.username });
-                    
-
                 } else {
                     res.status(401).json({ error: "Incorrect login Info!" });
                 }
@@ -92,7 +98,6 @@ app.get('/login', (req, res) => {
     res.json({ username: req.session.username || null });
 });
 
-
 // Middleware which protects any routes using POST or DELETE from access by users who are are not logged in
 app.use((req, res, next) => {
     if (["POST", "DELETE"].indexOf(req.method) == -1) {
@@ -105,7 +110,3 @@ app.use((req, res, next) => {
         }
     }
 });
-
-app.use('/users', userRouter);
-app.use('/songs', songRouter);
-app.listen(3000);
