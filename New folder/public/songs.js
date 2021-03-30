@@ -74,7 +74,6 @@ async function locate(artist) {
     const lat = results[0].lat;
     const lng = results[0].lon;
     const position = [lat, lng]
-    //const hometown = results.hometown;
 
 
     const marker = L.marker(position).addTo(map);
@@ -83,10 +82,31 @@ async function locate(artist) {
     marker.bindPopup(`This is the hometown of ${results[0].name}`)
 };
 document.getElementById('ajaxButton2').addEventListener('click', () => {
-    // Read the product type from a text field
     const search = document.getElementById('searchInput').value;
     console.log(search);
     locate(search);
 });
 
+async function login(){
+    const body = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+    }
+    
+    const response = await fetch("/login", {method:"POST",headers:{'Content-type': 'application/json'},body:JSON.stringify(body)});
 
+    const results = await response.json();
+    if(results){
+        document.getElementById('loginForm').innerHTML = `logged in as ${results.username}`;
+    } else{
+        window.alert("could not log in")
+    }
+
+}
+
+document.getElementById('loginBtn').addEventListener('click', () => {
+    // const username = document.getElementById('username');
+    // const password = document.getElementById('password');
+    console.log(username + password);
+    login(username, password);
+});

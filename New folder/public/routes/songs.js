@@ -78,7 +78,7 @@ songRouter.post('/buy/:id/:quantity', (req, res) => {
         });
 });
 songRouter.delete('/:id', (req, res) => {
-    con.query('DELETE FROM songs WHERE id=?', [req.params.id], (error, results, fields) => {
+    con.query('DELETE FROM wadsongs WHERE id=?', [req.params.id], (error, results, fields) => {
         if (error) {
             res.status(500).json({ error: error });
         } else if (results.affectedRows == 1) {
