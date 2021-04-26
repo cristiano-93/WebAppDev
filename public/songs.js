@@ -63,7 +63,7 @@ async function buy(songId, buyQ) {
     if (results.quantity = 0) {
         alert("Song is out of stock")
     }
-    alert(results[0].quantity)
+    alert("song stock is now "+results[0].quantity-buyQ)
 
 };
 
@@ -101,7 +101,6 @@ async function login(){
     } else{
         window.alert("could not log in")
     }
-
 }
 
 document.getElementById('loginBtn').addEventListener('click', () => {

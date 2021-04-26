@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css' />
+    <script type='text/javascript' src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'></script>
+</head>
+
+<body>
+    <h1>SONGSSS</h1>
+
+    <div id="loginForm" style="display:none">
+        <form action="" method="POST"> 
+            <label for="username">username</label>
+            <input type="text" id="username">
+            <label for="password">password</label>
+            <input type="text" id="password">
+        </form>
+        <button id="loginBtn" type="submit">LOGIN </button>
+    </div>
+    <div id=message style="display:none">
+
+    </div>
+    <button id="logoutBtn" type="submit" style="display:none" >LOGOUT </button>
+
+
+    <label for="artist">Artist:</label>
+    <input type="text" id="artistName">
+    <button id="btn1">submit</button>
+    <input id="btn2" type="button" value="where is this artist from">
+    <br>
+
+    <label for="artist">Search by type:</label>
+    <input type="text" id="typefield">
+    <button id="btnType">submit</button>
+
+    <select id='searchType'>
+        <option>title</option>
+        <option>artist</option>
+        <option>year</option>
+    </select>
+
+    <div id="results">
+
+
+
+    </div>
+
+    <div id="map1" style="width:800px; height:600px"> </div>
+
+    <script src="songs copy.js"></script>>
+
+</body>
+
+</html>
